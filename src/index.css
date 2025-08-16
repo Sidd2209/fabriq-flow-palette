@@ -174,7 +174,7 @@
   }
 
   .btn-secondary {
-    @apply bg-gradient-surface border border-border/50;
+    @apply bg-white/90 border border-border/50;
     @apply text-foreground font-medium px-6 py-3 rounded-lg;
     @apply shadow-sm hover:shadow-md transition-all duration-300;
     @apply hover:scale-105 hover:border-primary/30 hover:bg-primary/5;
@@ -201,10 +201,9 @@
 
   /* Department cards */
   .dept-card {
-    @apply bg-gradient-surface rounded-xl shadow-md hover:shadow-lg;
+    @apply bg-card/95 backdrop-blur-sm rounded-xl shadow-md hover:shadow-lg;
     @apply transition-all duration-300 hover:-translate-y-1;
     @apply border border-border/50 hover:border-primary/20;
-    @apply backdrop-blur-sm;
   }
 
   /* Status badges */
