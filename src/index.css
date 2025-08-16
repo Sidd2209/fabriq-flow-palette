@@ -1,42 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* PLM Design System - Professional yet approachable */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base colors */
+    --background: 248 250 252;
+    --foreground: 215 28% 17%;
 
+    /* Card system */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 215 28% 17%;
 
+    /* Interactive elements */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 28% 17%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary brand colors - Professional blue */
+    --primary: 214 84% 56%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 214 84% 46%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary colors - Soft neutral */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 215 28% 17%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted colors */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 20% 50%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent colors for departments */
+    --accent: 214 84% 56%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status colors */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders and inputs */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 214 84% 56%;
 
-    --radius: 0.5rem;
+    /* Department colors */
+    --design: 280 83% 57%;
+    --sampling: 142 71% 45%;
+    --merchandising: 38 92% 50%;
+    --logistics: 221 83% 53%;
+    --procurement: 280 83% 57%;
+    --management: 17 88% 40%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(214 84% 56%), hsl(221 83% 53%));
+    --gradient-secondary: linear-gradient(135deg, hsl(210 40% 96%), hsl(214 32% 91%));
+    --gradient-hero: linear-gradient(135deg, hsl(214 84% 56%) 0%, hsl(280 83% 57%) 50%, hsl(38 92% 50%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(215 28% 17% / 0.05);
+    --shadow: 0 4px 6px -1px hsl(215 28% 17% / 0.1);
+    --shadow-md: 0 10px 15px -3px hsl(215 28% 17% / 0.1);
+    --shadow-lg: 0 20px 25px -5px hsl(215 28% 17% / 0.1);
+    --shadow-glow: 0 0 20px hsl(214 84% 56% / 0.3);
+
+    /* Spacing and sizing */
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +135,50 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
+  }
+}
+
+@layer components {
+  /* Hero gradient button */
+  .btn-hero {
+    @apply bg-gradient-to-r from-primary via-accent to-primary;
+    @apply text-primary-foreground font-medium px-8 py-3 rounded-xl;
+    @apply shadow-lg hover:shadow-glow transition-all duration-300;
+    @apply hover:scale-105 hover:shadow-xl;
+    background-size: 200% 100%;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  /* Department cards */
+  .dept-card {
+    @apply bg-card rounded-xl shadow-md hover:shadow-lg;
+    @apply transition-all duration-300 hover:-translate-y-1;
+    @apply border border-border/50 hover:border-primary/20;
+  }
+
+  /* Status badges */
+  .status-draft {
+    @apply bg-muted text-muted-foreground px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .status-approved {
+    @apply bg-success/10 text-success px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .status-pending {
+    @apply bg-warning/10 text-warning px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  /* Fade in animation */
+  .fade-in {
+    @apply animate-fade-in;
+  }
+
+  /* Chart placeholder */
+  .chart-placeholder {
+    @apply bg-gradient-to-br from-muted to-secondary;
+    @apply rounded-lg border-2 border-dashed border-border;
+    @apply flex items-center justify-center text-muted-foreground;
   }
 }
