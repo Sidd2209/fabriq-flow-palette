@@ -62,6 +62,8 @@
     --gradient-primary: linear-gradient(135deg, hsl(214 84% 56%), hsl(221 83% 53%));
     --gradient-secondary: linear-gradient(135deg, hsl(210 40% 96%), hsl(214 32% 91%));
     --gradient-hero: linear-gradient(135deg, hsl(214 84% 56%) 0%, hsl(280 83% 57%) 50%, hsl(38 92% 50%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(280 83% 57%), hsl(214 84% 56%));
+    --gradient-surface: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 40% 98%));
 
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 hsl(215 28% 17% / 0.05);
@@ -69,6 +71,8 @@
     --shadow-md: 0 10px 15px -3px hsl(215 28% 17% / 0.1);
     --shadow-lg: 0 20px 25px -5px hsl(215 28% 17% / 0.1);
     --shadow-glow: 0 0 20px hsl(214 84% 56% / 0.3);
+    --shadow-button: 0 4px 14px 0 hsl(214 84% 56% / 0.25);
+    --shadow-button-hover: 0 6px 20px 0 hsl(214 84% 56% / 0.35);
 
     /* Spacing and sizing */
     --radius: 0.75rem;
@@ -140,21 +144,67 @@
 }
 
 @layer components {
-  /* Hero gradient button */
+  /* Enhanced button variants */
   .btn-hero {
+    @apply relative overflow-hidden;
     @apply bg-gradient-to-r from-primary via-accent to-primary;
-    @apply text-primary-foreground font-medium px-8 py-3 rounded-xl;
-    @apply shadow-lg hover:shadow-glow transition-all duration-300;
-    @apply hover:scale-105 hover:shadow-xl;
+    @apply text-primary-foreground font-semibold px-8 py-4 rounded-xl;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:shadow-button-hover;
+    box-shadow: var(--shadow-button);
     background-size: 200% 100%;
-    animation: gradient-shift 3s ease infinite;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  .btn-hero::before {
+    @apply absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300;
+    content: '';
+    border-radius: inherit;
+  }
+
+  .btn-hero:hover::before {
+    @apply opacity-100;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-primary-hover;
+    @apply text-primary-foreground font-medium px-6 py-3 rounded-lg;
+    @apply shadow-md hover:shadow-lg transition-all duration-300;
+    @apply hover:scale-105 hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply bg-gradient-surface border border-border/50;
+    @apply text-foreground font-medium px-6 py-3 rounded-lg;
+    @apply shadow-sm hover:shadow-md transition-all duration-300;
+    @apply hover:scale-105 hover:border-primary/30 hover:bg-primary/5;
+  }
+
+  .btn-accent {
+    @apply bg-gradient-accent text-white font-medium px-6 py-3 rounded-lg;
+    @apply shadow-md hover:shadow-lg transition-all duration-300;
+    @apply hover:scale-105 hover:-translate-y-0.5;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-foreground font-medium px-6 py-3 rounded-lg;
+    @apply hover:bg-secondary/80 transition-all duration-300;
+    @apply hover:scale-105;
+  }
+
+  .btn-destructive {
+    @apply bg-gradient-to-r from-destructive to-red-600;
+    @apply text-destructive-foreground font-medium px-6 py-3 rounded-lg;
+    @apply shadow-md hover:shadow-lg transition-all duration-300;
+    @apply hover:scale-105 hover:-translate-y-0.5;
   }
 
   /* Department cards */
   .dept-card {
-    @apply bg-card rounded-xl shadow-md hover:shadow-lg;
+    @apply bg-gradient-surface rounded-xl shadow-md hover:shadow-lg;
     @apply transition-all duration-300 hover:-translate-y-1;
     @apply border border-border/50 hover:border-primary/20;
+    @apply backdrop-blur-sm;
   }
 
   /* Status badges */
@@ -168,6 +218,15 @@
   
   .status-pending {
     @apply bg-warning/10 text-warning px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  /* Sidebar enhancements */
+  .sidebar-trigger {
+    @apply fixed top-4 left-4 z-50;
+    @apply bg-card/95 backdrop-blur-md border border-border/50;
+    @apply shadow-lg hover:shadow-xl transition-all duration-300;
+    @apply hover:scale-110 hover:bg-primary hover:text-primary-foreground;
+    @apply rounded-xl p-3;
   }
 
   /* Fade in animation */

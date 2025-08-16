@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Navigation } from './Navigation';
+import { NavigationLayout } from './NavigationLayout';
 
 interface LayoutProps {
   children: ReactNode;
@@ -7,11 +7,10 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-      <main className="relative">
+    <NavigationLayout>
+      <div className="min-h-screen bg-background">
         {children}
-      </main>
-    </div>
+      </div>
+    </NavigationLayout>
   );
 }
