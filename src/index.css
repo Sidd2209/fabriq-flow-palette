@@ -258,7 +258,7 @@
     @apply bg-card/90 backdrop-blur-md border border-border/50;
     @apply shadow-lg hover:shadow-xl transition-all duration-300;
     @apply hover:scale-110 hover:bg-primary hover:text-primary-foreground;
-    @apply rounded-2xl p-4 group;
+    @apply rounded-2xl p-4;
   }
 
   .sidebar-trigger.open {
