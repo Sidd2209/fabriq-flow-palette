@@ -254,16 +254,18 @@
 
   /* Floating Sidebar Trigger */
   .sidebar-trigger {
-    @apply fixed top-6 left-6 z-[60];
+    @apply fixed top-6 z-[60];
     @apply bg-card/90 backdrop-blur-md border border-border/50;
-    @apply shadow-lg hover:shadow-xl transition-all duration-300;
+    @apply shadow-lg hover:shadow-xl transition-all duration-500;
     @apply hover:scale-110 hover:bg-primary hover:text-primary-foreground;
     @apply rounded-2xl p-4;
+    left: 1.5rem;
+    transition: left 0.5s ease-in-out, transform 0.3s ease-out, background-color 0.3s ease-out;
   }
 
   .sidebar-trigger.open {
-    @apply bg-primary text-primary-foreground shadow-glow;
-    @apply scale-110;
+    @apply bg-primary text-primary-foreground shadow-glow scale-110;
+    left: 24rem;
   }
 
   .sidebar-trigger-icon {

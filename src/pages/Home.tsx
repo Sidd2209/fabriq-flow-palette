@@ -87,22 +87,6 @@ export default function Home() {
                 </p>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  className="btn-hero"
-                  size="lg"
-                >
-                  Get Started
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="border-primary/20 hover:border-primary/40 hover:bg-primary/5"
-                >
-                  Watch Demo
-                </Button>
-              </div>
             </div>
             
             <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
